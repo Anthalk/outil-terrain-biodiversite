@@ -59,6 +59,7 @@ Trois niveaux, quatre types de contrainte et une trentaine d'éléments codifié
 | H1 | Partie du site non construite et non terrassée depuis plus de 20 ans | Nouveau |
 | S2 | Front vertical de sable ou de terre meuble (talus, stock, carrière) | Nouveau |
 | F1 à F8 | Animaux observés pendant la visite (F1 scindé en F1a, nids en boue sous les toits, et F1b, nids dans la végétation) | V2 |
+| F9 | Oiseau qui niche : comportement de nidification observé ; les oiseaux simplement posés ou de passage ne comptent pas | Nouveau |
 | I1 à I7 | Faits signalés par un occupant | V2 |
 
 H1 se renseigne au bureau, à partir de l'étude historique de la due diligence ou des photographies aériennes anciennes.
@@ -79,6 +80,7 @@ Les oiseaux sortent rarement en dessous de « Modérée » dès qu'il y a de la 
 | OI8 | S1 et (A2, E1 ou E3) | Modérée | C3 | Gravier ou sable nu près de l'eau, même sur petite surface : contexte typique de nidification du Petit Gravelot |
 | OI9 | E4b | Modérée | C3 | Roselière : passereaux paludicoles (rousserolles, Bruant des roseaux) |
 | OI10 | S2 | Modérée | C2 | Front de sable vertical : colonies possibles d'Hirondelle de rivage |
+| OI13 | F9 | Forte | C2 | Comportement de nidification observé (va-et-vient au nid, transport de matériaux ou de nourriture, hirondelles ou martinets autour du bâti, oiseau qui court et crie sur le sol nu) : nids à localiser avant travaux |
 
 F1a est illustré par une photo de nid d'hirondelle en boue, reconnaissable toute l'année ; les nids de martinets, rarement visibles, sont couverts par B4. OI8 traite le Petit Gravelot par le contexte plutôt que par la surface : l'espèce s'installe volontiers sur de petites surfaces minérales proches de l'eau.
 

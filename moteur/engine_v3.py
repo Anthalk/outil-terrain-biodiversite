@@ -18,6 +18,7 @@ RULES = [
     R("OI1", "Oiseaux", lambda y, a: y("V3"), 2, "C2"),
     R("OI2", "Oiseaux", lambda y, a: y("F1a") or y("I1"), 2, "C3"),
     R("OI3", "Oiseaux", lambda y, a: y("F1b"), 1, "C1"),
+    R("OI13", "Oiseaux", lambda y, a: y("F9"), 2, "C2"),
     R("OI4", "Oiseaux", lambda y, a: y("B4"), 1, "C2"),
     R("OI5", "Oiseaux", lambda y, a: y("V4"), 1, "C1"),
     R("OI6", "Oiseaux", lambda y, a: y("V2b"), 1, "C1"),
