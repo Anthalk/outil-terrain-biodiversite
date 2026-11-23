@@ -33,6 +33,8 @@
 * { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; }
 body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.45; -webkit-text-size-adjust: 100%; }
+body { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; }
+input, textarea { -webkit-user-select: text; user-select: text; -webkit-touch-callout: default; }
 .app { max-width: 480px; margin: 0 auto; min-height: 100%; padding: calc(12px + env(safe-area-inset-top)) 16px calc(110px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 18px; }
 h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
 h1 { font-size: 26px; line-height: 1.1; }
@@ -348,18 +350,21 @@ function renderReleve() {
   bindReleve();
 }
 
+let pressGuard = 0;
+const clearSel = () => { try { const sel = window.getSelection(); if (sel && sel.rangeCount) sel.removeAllRanges(); } catch (er) {} };
+document.addEventListener("selectstart", e => { if (Date.now() < pressGuard && !e.target.closest?.("input, textarea")) e.preventDefault(); });
 function bindPress(el, onTap, onLong) {
   let t = null, long = false, x = 0, y = 0;
   el.addEventListener("pointerdown", e => {
     if (e.target.closest(".unsure")) return;
-    long = false; x = e.clientX; y = e.clientY; el.classList.add("pressing");
-    t = setTimeout(() => { long = true; el.classList.remove("pressing"); if (navigator.vibrate) { try { navigator.vibrate(15); } catch (er) {} } onLong(); }, 450);
+    long = false; x = e.clientX; y = e.clientY; el.classList.add("pressing"); pressGuard = Date.now() + 1500;
+    t = setTimeout(() => { long = true; el.classList.remove("pressing"); if (navigator.vibrate) { try { navigator.vibrate(15); } catch (er) {} } onLong(); clearSel(); setTimeout(clearSel, 120); setTimeout(clearSel, 400); }, 450);
   });
   const cancel = () => { clearTimeout(t); el.classList.remove("pressing"); };
   el.addEventListener("pointermove", e => { if (Math.abs(e.clientX - x) > 10 || Math.abs(e.clientY - y) > 10) cancel(); });
   el.addEventListener("pointerleave", cancel);
   el.addEventListener("pointercancel", cancel);
-  el.addEventListener("pointerup", e => { if (e.target.closest(".unsure")) return; const was = t; cancel(); if (!long && was) onTap(); t = null; });
+  el.addEventListener("pointerup", e => { if (long) { clearSel(); setTimeout(clearSel, 50); } if (e.target.closest(".unsure")) return; const was = t; cancel(); if (!long && was) onTap(); t = null; });
   el.addEventListener("contextmenu", e => e.preventDefault());
   el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onTap(); } if (e.key.toLowerCase() === "e") onLong(); });
 }
