@@ -1,0 +1,2003 @@
+{
+"milesse": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Forte",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Forte",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+}
+},
+"vennecy": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte"
+},
+"alerts": [
+"Mammifères",
+"Chauves-souris"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte"
+},
+"alerts": [
+"Oiseaux",
+"Mammifères",
+"Chauves-souris",
+"Reptiles"
+]
+}
+},
+"clairoix": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Modérée",
+"Reptiles": "Forte",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte"
+},
+"alerts": []
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Modérée",
+"Reptiles": "Forte",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte"
+},
+"alerts": []
+}
+},
+"corbehem": {
+"non": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": []
+},
+"nsp": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": [
+"Amphibiens",
+"Reptiles"
+]
+}
+},
+"vendin": {
+"non": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {},
+"alerts": [
+"Mammifères",
+"Reptiles"
+]
+},
+"nsp": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {},
+"alerts": [
+"Mammifères",
+"Reptiles"
+]
+}
+},
+"epieds": {
+"non": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": []
+},
+"nsp": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": [
+"Reptiles"
+]
+}
+},
+"marseille_hlu": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Amphibiens",
+"Reptiles"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Amphibiens",
+"Reptiles"
+]
+}
+},
+"evalley": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+}
+},
+"lillebonne": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte"
+},
+"alerts": []
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+}
+},
+"rillieux": {
+"non": {
+"glob": "Faible",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": []
+},
+"nsp": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": [
+"Oiseaux",
+"Mammifères",
+"Chauves-souris",
+"Amphibiens",
+"Reptiles"
+]
+}
+},
+"fontenay": {
+"non": {
+"glob": "Faible",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": []
+},
+"nsp": {
+"glob": "Faible",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": []
+}
+},
+"neuville": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": []
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Oiseaux",
+"Chauves-souris",
+"Amphibiens",
+"Reptiles"
+]
+}
+},
+"roye": {
+"non": {
+"glob": "Faible",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": []
+},
+"nsp": {
+"glob": "Faible",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": []
+}
+},
+"mazingarbe": {
+"non": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": []
+},
+"nsp": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": [
+"Amphibiens",
+"Reptiles"
+]
+}
+},
+"marce": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Forte",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Modérée",
+"Reptiles": "Modérée",
+"Libellules": "Modérée",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte",
+"Flore": "Forte"
+},
+"alerts": []
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Forte",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Modérée",
+"Reptiles": "Modérée",
+"Libellules": "Modérée",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte",
+"Flore": "Forte"
+},
+"alerts": []
+}
+},
+"pv_millery": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Forte",
+"Libellules": "Faible",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Forte",
+"Flore": "Forte"
+},
+"alerts": []
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Forte",
+"Libellules": "Faible",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Forte",
+"Flore": "Forte"
+},
+"alerts": []
+}
+},
+"pv_pernay": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Modérée",
+"Libellules": "Faible",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Flore": "Forte"
+},
+"alerts": []
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Modérée",
+"Libellules": "Faible",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Flore": "Forte"
+},
+"alerts": []
+}
+},
+"pv_peyre": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Forte",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Forte",
+"Flore": "Modérée"
+},
+"alerts": []
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Forte",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Forte",
+"Flore": "Modérée"
+},
+"alerts": []
+}
+},
+"pv_laserpent": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Forte",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Forte",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+}
+},
+"pv_lachapelle": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Forte",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Faible",
+"Reptiles": "Forte",
+"Libellules": "Faible",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {},
+"alerts": [
+"Amphibiens"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Forte",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Faible",
+"Reptiles": "Forte",
+"Libellules": "Faible",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": [
+"Amphibiens"
+]
+}
+},
+"pv_stleger": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Forte",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Forte",
+"Flore": "Modérée"
+},
+"alerts": []
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Forte",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Forte",
+"Flore": "Modérée"
+},
+"alerts": []
+}
+},
+"pv_chauvigny": {
+"non": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Modérée",
+"Libellules": "Faible",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {},
+"alerts": []
+},
+"nsp": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Modérée",
+"Libellules": "Faible",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": [
+"Chauves-souris",
+"Amphibiens"
+]
+}
+},
+"pv_rothiere": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Forte",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte"
+},
+"alerts": [
+"Mammifères",
+"Chauves-souris",
+"Reptiles"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Forte",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte"
+},
+"alerts": [
+"Oiseaux",
+"Mammifères",
+"Chauves-souris",
+"Reptiles"
+]
+}
+},
+"lot_ergue": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Chauves-souris",
+"Reptiles"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+}
+},
+"zac_renancourt": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Forte",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": []
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Forte",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": [
+"Chauves-souris",
+"Amphibiens"
+]
+}
+},
+"zac_baincthun": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte"
+},
+"alerts": []
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Chauves-souris",
+"Reptiles"
+]
+}
+},
+"zac_cancale": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Forte",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte"
+},
+"alerts": []
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Forte",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+}
+},
+"lot_zuydcoote": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Chauves-souris",
+"Reptiles"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Chauves-souris",
+"Reptiles"
+]
+}
+},
+"lot_marck": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Forte",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Forte",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+}
+},
+"dc_aulnay": {
+"non": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": []
+},
+"nsp": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": [
+"Amphibiens",
+"Reptiles"
+]
+}
+},
+"dc_marcoussis": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+}
+},
+"dc_corbeil": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": []
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Oiseaux",
+"Chauves-souris",
+"Amphibiens",
+"Reptiles"
+]
+}
+},
+"dc_pessac": {
+"non": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": []
+},
+"nsp": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": [
+"Oiseaux",
+"Mammifères",
+"Chauves-souris",
+"Amphibiens",
+"Reptiles"
+]
+}
+},
+"dc_blyes": {
+"non": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": []
+},
+"nsp": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": [
+"Amphibiens",
+"Reptiles"
+]
+}
+},
+"dc_tremblay": {
+"non": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": []
+},
+"nsp": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": [
+"Oiseaux",
+"Mammifères",
+"Amphibiens",
+"Reptiles"
+]
+}
+},
+"zac_vendargues": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Forte",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Forte",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+}
+},
+"zac_peyrestortes": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Chauves-souris",
+"Amphibiens",
+"Reptiles"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Oiseaux",
+"Chauves-souris",
+"Amphibiens",
+"Reptiles"
+]
+}
+},
+"roncq": {
+"non": {
+"glob": "Faible",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": []
+},
+"nsp": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": [
+"Oiseaux",
+"Mammifères",
+"Chauves-souris",
+"Reptiles"
+]
+}
+},
+"levainville": {
+"non": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Modérée"
+},
+"themes": {
+"Flore": "Modérée"
+},
+"alerts": []
+},
+"nsp": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Flore": "Modérée"
+},
+"alerts": [
+"Amphibiens",
+"Reptiles"
+]
+}
+},
+"elevage_winnezeele": {
+"non": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": []
+},
+"nsp": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": [
+"Oiseaux",
+"Mammifères",
+"Chauves-souris",
+"Reptiles"
+]
+}
+},
+"serre_treflaouenan": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Chauves-souris",
+"Reptiles"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Oiseaux",
+"Chauves-souris",
+"Reptiles"
+]
+}
+},
+"usine_panzani": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Modérée",
+"Reptiles": "Modérée",
+"Libellules": "Modérée",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Chauves-souris"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Modérée",
+"Reptiles": "Modérée",
+"Libellules": "Modérée",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Chauves-souris"
+]
+}
+},
+"centrale_uem_metz": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte"
+},
+"alerts": []
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Modérée",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+}
+},
+"agripv_ge31": {
+"non": {
+"glob": "Faible",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": []
+},
+"nsp": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": [
+"Oiseaux",
+"Mammifères",
+"Chauves-souris",
+"Amphibiens",
+"Reptiles"
+]
+}
+},
+"agripv_viticole": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Amphibiens",
+"Reptiles"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Oiseaux",
+"Chauves-souris",
+"Amphibiens",
+"Reptiles"
+]
+}
+},
+"pv_stlaurent": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Forte",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Forte",
+"Mammifères": "Modérée",
+"Chauves-souris": "Forte",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Forte",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Reptiles"
+]
+}
+},
+"ctlog": {
+"non": {
+"glob": "Faible",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": []
+},
+"nsp": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": [
+"Oiseaux",
+"Mammifères",
+"Chauves-souris",
+"Amphibiens",
+"Reptiles"
+]
+}
+},
+"pv_commensacq": {
+"non": {
+"glob": "Faible",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {},
+"alerts": []
+},
+"nsp": {
+"glob": "Modérée",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Faible",
+"Libellules": "Faible",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": [
+"Oiseaux",
+"Mammifères",
+"Chauves-souris",
+"Amphibiens",
+"Reptiles"
+]
+}
+},
+"agripv_motte": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Chauves-souris",
+"Reptiles"
+]
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Modérée",
+"Mammifères": "Modérée",
+"Chauves-souris": "Faible",
+"Amphibiens": "Modérée",
+"Reptiles": "Faible",
+"Libellules": "Modérée",
+"Criquets": "Faible",
+"Papillons": "Faible"
+},
+"themes": {
+"Zone humide": "Modérée",
+"Cours d'eau": "Forte"
+},
+"alerts": [
+"Chauves-souris",
+"Reptiles"
+]
+}
+},
+"dc_dugny": {
+"non": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Forte",
+"Libellules": "Faible",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {},
+"alerts": []
+},
+"nsp": {
+"glob": "Forte",
+"groups": {
+"Oiseaux": "Faible",
+"Mammifères": "Faible",
+"Chauves-souris": "Faible",
+"Amphibiens": "Faible",
+"Reptiles": "Forte",
+"Libellules": "Faible",
+"Criquets": "Modérée",
+"Papillons": "Modérée"
+},
+"themes": {
+"Zone humide": "Modérée"
+},
+"alerts": [
+"Oiseaux",
+"Mammifères",
+"Chauves-souris",
+"Amphibiens"
+]
+}
+}
+}

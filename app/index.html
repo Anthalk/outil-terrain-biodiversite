@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Outil terrain biodiversité</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Outil de terrain lisible en plein soleil : un seul thème clair à fort contraste, colonne téléphone, tuiles illustrées. */
+  color-scheme: light;
+  --bg: #EDF0EA;
+  --card: #FFFFFF;
+  --ink: #13201A;
+  --muted: #4A574F;
+  --line: #C6CFC6;
+  --moss: #2C6A3E;
+  --moss-bg: #E0EEDD;
+  --amber: #8A5700;
+  --amber-bg: #FCEECB;
+  --amber-line: #D6A035;
+  --high: #9E2219; --high-bg: #F8DCD8;
+  --mid: #924F00; --mid-bg: #FBE7CF;
+  --low: #2C6A3E; --low-bg: #E0EEDD;
+  --display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --il-leaf: #7DAE69; --il-leaf2: #5A8E4E; --il-grass: #B9D49A; --il-field: #E6DBA5;
+  --il-water: #8CC2D8; --il-bark: #946F4E; --il-bark2: #C9A781; --il-wall: #DAD6CD;
+  --il-roof: #A9583F; --il-dark: #2B2B27; --il-stone: #B8B3A6; --il-mud: #9C8A6A;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.45; -webkit-text-size-adjust: 100%; }
+.app { max-width: 480px; margin: 0 auto; min-height: 100%; padding: calc(12px + env(safe-area-inset-top)) 16px calc(110px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 18px; }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h1 { font-size: 26px; line-height: 1.1; }
+h2 { font-size: 19px; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, input:focus-visible { outline: 3px solid var(--moss); outline-offset: 2px; }
+.top { display: flex; flex-direction: column; gap: 6px; }
+.eyebrow { font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tag { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-line); }
+.site { width: 100%; font: 700 17px/1.3 var(--body); color: var(--ink); background: var(--card); border: 1.5px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.hint { font-size: 14px; color: var(--muted); background: var(--card); border-radius: 10px; padding: 10px 12px; border: 1px dashed var(--line); display: flex; gap: 10px; align-items: center; }
+.hint b { color: var(--ink); }
+section { display: flex; flex-direction: column; gap: 10px; }
+.sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.sec-head small { color: var(--muted); font-size: 13px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 12px; }
+.q { display: flex; flex-direction: column; gap: 8px; }
+.q p { margin: 0; font-size: 15px; }
+.seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.seg button { min-height: 44px; padding: 6px 4px; border-radius: 9px; border: 1.5px solid var(--line); background: var(--card); font-weight: 700; font-size: 15px; line-height: 1.15; }
+.follow .seg button { font-size: 14px; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.tile { position: relative; min-height: 124px; background: var(--card); border: 1.5px solid var(--line); border-radius: 12px; padding: 8px 8px 10px; display: flex; flex-direction: column; align-items: stretch; gap: 4px; text-align: left; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; touch-action: manipulation; transition: transform .12s ease, background .12s ease, border-color .12s ease; }
+.tile svg { width: 100%; height: 62px; display: block; }
+.tile .lab { font-weight: 700; font-size: 15px; line-height: 1.2; padding-right: 30px; }
+.tile.vu { background: var(--moss-bg); border: 2.5px solid var(--moss); padding: 7px 7px 9px; }
+.tile.ns { background: var(--amber-bg); border: 2.5px solid var(--amber-line); padding: 7px 7px 9px; }
+.tile.pressing { transform: scale(.97); }
+.badge { position: absolute; top: 6px; left: 6px; width: 26px; height: 26px; border-radius: 50%; display: none; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; color: #fff; }
+.tile.vu .badge { display: flex; background: var(--moss); }
+.tile.ns .badge { display: flex; background: var(--amber); }
+.unsure { position: absolute; right: 6px; bottom: 6px; width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--line); background: var(--card); font-weight: 700; font-size: 16px; color: var(--muted); display: flex; align-items: center; justify-content: center; }
+.tile.ns .unsure { background: var(--amber); border-color: var(--amber); color: #fff; }
+.follow { grid-column: 1 / -1; background: var(--card); border: 1.5px dashed var(--moss); border-radius: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; animation: drop .18s ease; }
+.follow p { margin: 0; font-size: 15px; font-weight: 700; }
+.follow .ex { align-self: flex-start; background: none; border: 0; padding: 0; color: var(--moss); text-decoration: underline; font-size: 14px; }
+.follow.err { border-color: var(--high); }
+.errmsg { color: var(--high); font-size: 14px; font-weight: 700; margin: 0; }
+@keyframes drop { from { opacity: .3; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { min-height: 42px; padding: 8px 14px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--card); font-weight: 700; font-size: 15px; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+.chip[aria-pressed="true"] { background: var(--moss); border-color: var(--moss); color: #fff; }
+.chip[aria-pressed="true"]::before { content: "✓ "; }
+.fold { background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+.fold > button { width: 100%; text-align: left; background: none; border: 0; padding: 12px; display: flex; justify-content: space-between; align-items: center; gap: 8px; font-weight: 700; }
+.fold > button span:last-child { color: var(--muted); font-size: 14px; font-weight: 400; }
+.fold .inner { padding: 0 12px 12px; display: flex; flex-direction: column; gap: 8px; }
+.fold .inner p { margin: 0; font-size: 14px; color: var(--muted); }
+.check { display: flex; gap: 10px; align-items: flex-start; padding: 10px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--card); text-align: left; font-size: 15px; width: 100%; }
+.check .box { flex: none; width: 24px; height: 24px; border-radius: 6px; border: 2px solid var(--line); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; }
+.check[aria-pressed="true"] { border-color: var(--moss); background: var(--moss-bg); }
+.check[aria-pressed="true"] .box { background: var(--moss); border-color: var(--moss); }
+.check[aria-pressed="true"] .box::after { content: "✓"; }
+.closing { background: var(--ink); color: #fff; border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.closing p { margin: 0; font-weight: 700; font-size: 16px; }
+.closing small { color: #C9D3CC; font-size: 13px; }
+.closing .seg button { background: transparent; color: #fff; border-color: #56645B; }
+.closing .seg button[aria-pressed="true"] { background: #fff; color: var(--ink); border-color: #fff; }
+.closing.err { outline: 3px solid var(--high); }
+.closing .errmsg { color: #FFB4AB; }
+.bar { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(237,240,234,.96); border-top: 1px solid var(--line); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); }
+.bar-in { max-width: 480px; margin: 0 auto; display: flex; gap: 12px; align-items: center; }
+.bar-in .count { flex: 1; font-size: 14px; color: var(--muted); }
+.bar-in .count b { color: var(--ink); }
+.primary { min-height: 50px; padding: 0 22px; border-radius: 12px; border: 0; background: var(--moss); color: #fff; font-weight: 700; font-size: 17px; }
+.ghost { min-height: 44px; padding: 0 14px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--card); font-weight: 700; font-size: 15px; }
+.sheet-wrap { position: fixed; inset: 0; background: rgba(19,32,26,.45); display: flex; align-items: flex-end; justify-content: center; z-index: 10; animation: fade .15s ease; }
+.sheet { width: 100%; max-width: 480px; background: var(--card); border-radius: 18px 18px 0 0; padding: 14px 16px calc(16px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 12px; animation: up .2s ease; }
+.sheet .grab { width: 40px; height: 4px; border-radius: 2px; background: var(--line); align-self: center; }
+.sheet .pic { background: #F4F6F1; border-radius: 12px; padding: 10px; border: 1px solid var(--line); }
+.sheet .pic svg { width: 100%; height: 170px; display: block; }
+.sheet p { margin: 0; font-size: 16px; }
+.sheet .note { font-size: 13px; color: var(--muted); }
+.sheet .acts { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.sheet .acts.one { grid-template-columns: 1fr; }
+@keyframes up { from { transform: translateY(30px); opacity: .5; } to { transform: none; opacity: 1; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+/* Résultat */
+.verdict { border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 8px; border: 2px solid; }
+.verdict .k { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.verdict h1 { font-size: 30px; }
+.verdict p { margin: 0; font-size: 15px; }
+.lv-2 { background: var(--high-bg); border-color: var(--high); color: var(--high); }
+.lv-1 { background: var(--mid-bg); border-color: var(--mid); color: var(--mid); }
+.lv-0 { background: var(--low-bg); border-color: var(--low); color: var(--low); }
+.verdict p, .verdict ul { color: var(--ink); }
+.why { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 15px; }
+.rows { background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+.row { display: flex; align-items: center; gap: 10px; padding: 11px 12px; border-top: 1px solid var(--line); }
+.row:first-child { border-top: 0; }
+.row .nm { flex: 1; min-width: 0; }
+.row .nm b { display: block; font-size: 15px; }
+.row .nm span { display: block; font-size: 13px; color: var(--muted); }
+.pill { flex: none; font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 999px; border: 1.5px solid; }
+.alerts { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.alerts li { background: var(--card); border-left: 4px solid var(--mid); border-radius: 0; padding: 10px 12px; font-size: 15px; }
+.foot { font-size: 13px; color: var(--muted); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.toast { position: fixed; left: 50%; bottom: calc(90px + env(safe-area-inset-bottom)); transform: translateX(-50%); background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 10px; font-size: 14px; z-index: 20; }
+/* Illustrations */
+.s { stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.n { fill: none; }
+.dash { stroke-dasharray: 4 4; }
+.fl { fill: var(--il-leaf); } .fl2 { fill: var(--il-leaf2); } .fg { fill: var(--il-grass); } .ff { fill: var(--il-field); }
+.fw { fill: var(--il-water); } .fb { fill: var(--il-bark); } .fb2 { fill: var(--il-bark2); } .fwall { fill: var(--il-wall); }
+.fr { fill: var(--il-roof); } .fd { fill: var(--il-dark); } .fs { fill: var(--il-stone); } .fm { fill: var(--il-mud); }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="app" id="app"></div>
+<div class="bar" id="bar"></div>
+<div id="layer"></div>
+<script>
+const SVG = {
+  A1: '<path class="ff" d="M0 56 Q30 46 62 52 T120 48 V80 H0Z"/><path class="s n" d="M0 64 Q40 58 84 62 T120 60 M8 72 Q50 66 100 70"/><circle class="fl2 s" cx="80" cy="30" r="13"/><path class="s" d="M80 43 V52"/><circle class="fl s" cx="99" cy="26" r="16"/><path class="s" d="M99 42 V50"/><circle class="fl2 s" cx="114" cy="36" r="9"/><path class="s dash n" d="M38 8 V78"/><rect class="fwall s" x="8" y="34" width="22" height="20" rx="2"/>',
+  A2: '<rect class="fg" x="0" y="0" width="120" height="80"/><path class="fw s" d="M0 34 Q30 24 62 34 T120 30 V52 Q90 62 60 52 T0 56Z"/><path class="s n" d="M18 44 q6 -4 12 0 M58 44 q6 -4 12 0 M90 40 q6 -4 12 0"/><path class="s n" d="M14 66 v-8 M18 66 v-11 M22 66 v-7 M96 22 v-8 M100 22 v-11"/>',
+  V1: '<rect class="fg" x="0" y="52" width="120" height="28"/><rect class="fwall s" x="6" y="28" width="30" height="26" rx="2"/><path class="s n" d="M0 54 H120"/><circle class="fl s" cx="70" cy="30" r="14"/><path class="s" d="M70 44 V54"/><circle class="fl2 s" cx="96" cy="44" r="9"/><circle class="fl s" cx="110" cy="46" r="7"/><path class="s n" d="M44 70 l3 -6 l3 6 M60 74 l3 -6 l3 6 M82 70 l3 -6 l3 6"/>',
+  V2: '<path class="s n" d="M0 74 H120"/><path class="fwall s" d="M10 74 V54 L25 42 L40 54 V74Z"/><rect class="fd" x="21" y="62" width="8" height="12"/><path class="fb s" d="M76 74 L78 46 L86 46 L88 74Z"/><circle class="fl2 s" cx="66" cy="34" r="13"/><circle class="fl2 s" cx="98" cy="32" r="14"/><circle class="fl s" cx="82" cy="22" r="19"/><path class="s dash n" d="M4 42 H116"/>',
+  V3: '<path class="fb s" d="M38 80 Q44 42 36 0 H84 Q76 42 82 80Z"/><ellipse class="fd" cx="60" cy="28" rx="7" ry="10"/><path class="s n" d="M69 48 l-3 7 l3 6 l-2 9"/><path class="fb2 s" d="M44 52 q9 -3 12 6 q-7 5 -12 2z"/><circle class="fl2" cx="41" cy="66" r="4.5"/><circle class="fl" cx="45" cy="74" r="4"/><circle class="fl2" cx="40" cy="58" r="3.5"/><path class="s n" d="M83 14 L106 6 M97 9 L101 0"/>',
+  V4: '<path class="s n" d="M0 70 H120"/><circle class="fl2 s" cx="14" cy="56" r="14"/><circle class="fl s" cx="36" cy="52" r="17"/><circle class="fl2 s" cx="60" cy="56" r="14"/><circle class="fl s" cx="82" cy="50" r="18"/><circle class="fl2 s" cx="106" cy="56" r="14"/><path class="s n" d="M24 66 q6 -18 16 -10 M70 66 q8 -22 18 -8"/><circle class="fr" cx="40" cy="46" r="2"/><circle class="fr" cx="86" cy="42" r="2"/><circle class="fr" cx="90" cy="47" r="2"/>',
+  V5: '<rect class="fg" x="0" y="60" width="120" height="20"/><path class="s n" d="M6 74 Q8 40 4 22 M14 74 Q18 46 24 30 M22 74 Q22 52 16 40 M32 74 Q36 36 44 18 M42 74 Q40 50 34 38 M52 74 Q56 44 52 26 M62 74 Q64 52 72 38 M72 74 Q70 40 64 20 M82 74 Q86 48 92 30 M92 74 Q90 54 84 42 M102 74 Q104 40 100 22 M112 74 Q114 50 118 36"/><path class="ff s" d="M4 22 l-2 -6 l4 0z M44 18 l-1 -7 l4 1z M64 20 l-2 -7 l4 1z M100 22 l-1 -7 l4 1z"/>',
+  E1: '<rect class="fg" x="0" y="0" width="120" height="80"/><ellipse class="fw s" cx="58" cy="46" rx="46" ry="22"/><path class="s n" d="M38 46 q8 -5 16 0 M64 52 q8 -5 16 0 M48 36 q6 -4 12 0"/><path class="s n" d="M98 40 v-18 M102 42 v-24 M106 44 v-16"/><ellipse class="fl2" cx="102" cy="16" rx="2.5" ry="5"/>',
+  E2: '<path class="fw" d="M0 54 H120 V80 H0Z"/><path class="fg s" d="M0 30 Q30 32 56 46 T92 60 L92 80 H0Z"/><path class="s n" d="M60 50 v-22 M66 54 v-26 M72 56 v-20 M78 58 v-24"/><ellipse class="fl2" cx="66" cy="26" rx="2.5" ry="6"/><ellipse class="fl2" cx="78" cy="32" rx="2.5" ry="6"/><path class="s n" d="M92 60 Q104 66 120 64"/>',
+  E3: '<rect class="fm" x="0" y="30" width="120" height="50"/><path class="s n" d="M0 30 H120"/><path class="fw s" d="M6 46 Q30 40 60 46 T116 44 L116 52 Q90 58 60 52 T6 54Z"/><path class="fw s" d="M10 64 Q40 60 70 66 T114 64 L114 70 Q80 74 50 70 T10 72Z"/><path class="s n" d="M30 22 l4 -8 M38 22 l3 -10 M90 22 l4 -8"/>',
+  E4: '<rect class="fw" x="0" y="58" width="120" height="22"/><path class="s n" d="M14 78 Q16 40 12 18 M24 78 Q26 44 30 22 M36 78 Q36 46 34 26 M50 78 Q54 40 58 16 M64 78 Q62 46 60 24 M78 78 Q80 42 86 20 M92 78 Q92 48 96 26 M106 78 Q104 44 102 22"/><path class="fb2 s" d="M12 18 q-4 -9 2 -14 q4 6 -2 14z M58 16 q-3 -9 3 -13 q3 7 -3 13z M86 20 q-3 -9 3 -13 q3 7 -3 13z M30 22 q-3 -8 2 -12 q3 6 -2 12z M102 22 q-3 -8 2 -12 q3 6 -2 12z"/>',
+  B1: '<path class="s n" d="M0 72 H120"/><ellipse class="fs s" cx="40" cy="64" rx="16" ry="9"/><ellipse class="fs s" cx="68" cy="64" rx="14" ry="9"/><ellipse class="fs s" cx="54" cy="50" rx="13" ry="9"/><ellipse class="fs s" cx="88" cy="66" rx="10" ry="7"/><ellipse class="fs s" cx="72" cy="46" rx="9" ry="7"/><ellipse class="fs s" cx="56" cy="34" rx="8" ry="6"/><rect class="fb2 s" x="92" y="40" width="24" height="7" rx="3"/><rect class="fb2 s" x="96" y="48" width="22" height="7" rx="3"/>',
+  B2: '<path class="s n" d="M0 74 H120"/><path class="fwall s" d="M40 74 V40 Q76 18 112 40 V74Z"/><rect class="fd" x="66" y="52" width="20" height="22"/><path class="fwall s" d="M6 74 V52 L20 40 L34 52 V74Z"/><path class="fr s" d="M3 54 L20 38 L37 54"/>',
+  B3: '<path class="s n" d="M0 76 H120"/><path class="fwall s" d="M18 76 V40 L60 12 L102 40 V76Z"/><path class="fd" d="M44 40 L60 28 L76 40Z"/><rect class="fd" x="48" y="54" width="24" height="22"/><path class="s n" d="M30 50 h12 v10 h-12z M78 50 h12 v10 h-12z M80 51 l8 8"/>',
+  S1: '<rect class="fs" x="0" y="34" width="120" height="46"/><path class="s n" d="M0 34 H120"/><circle class="fd" cx="20" cy="50" r="2"/><circle class="fd" cx="34" cy="62" r="1.6"/><circle class="fd" cx="52" cy="48" r="1.8"/><circle class="fd" cx="70" cy="66" r="2"/><circle class="fd" cx="88" cy="52" r="1.6"/><circle class="fd" cx="104" cy="64" r="2"/><circle class="fd" cx="12" cy="70" r="1.5"/><path class="fwall s" d="M74 44 q6 -8 14 -3 q4 4 -2 6 l-8 2z"/><path class="s n" d="M86 41 l5 -3"/><path class="s n" d="M78 46 l-1 5 M83 46 l1 5"/><path class="s n" d="M16 30 l3 -8 M100 30 l2 -7"/>',
+  B4: '<rect class="fwall s" x="10" y="26" width="100" height="50"/><path class="fr s" d="M4 28 L60 4 L116 28Z"/><path class="fd" d="M70 14 l8 -3 l3 5 l-8 3z"/><path class="s n" d="M40 34 l4 8 l-3 7 l5 9 l-2 8"/><rect class="fd" x="84" y="30" width="10" height="5"/><path class="s n" d="M10 40 H24 M10 54 H30 M90 62 H110"/>'
+};
+const svg = (k, big) => '<svg viewBox="0 0 120 80" preserveAspectRatio="xMidYMid meet" aria-hidden="true">' + (SVG[k] || '') + '</svg>';
+
+const EL = {
+  A1: { lab: "Bois, champs ou friches en bordure", d: "Le site touche un bois, des champs, des prairies ou un terrain laissé à l'abandon. Se vérifie aussi sur une vue aérienne." },
+  A2: { lab: "Rivière ou mare à proximité", d: "Un cours d'eau, un étang ou une mare à quelques centaines de mètres du site." },
+  V1: { lab: "Site en bonne partie vert", d: "Au moins un tiers du site est en herbe, en arbres ou en buissons, plutôt qu'en bâtiments, bitume ou gravier." },
+  V2: { lab: "Grands arbres", d: "Des arbres plus hauts qu'une maison." },
+  V4: { lab: "Haies, buissons, ronces", d: "Haies, massifs d'arbustes, fourrés ou ronciers." },
+  V5: { lab: "Herbe sans entretien", d: "Friche, prairie, herbe haute ou sèche : la végétation pousse librement. Une pelouse tondue ne compte pas." },
+  E1: { lab: "Mare, bassin ou fossé", d: "De l'eau sur le site : mare, étang, bassin, fossé ou ruisseau." },
+  E3: { lab: "Eau stagnante, boue", d: "Creux, ornières ou zones basses où l'eau stagne : eau, boue, ou dépôts de boue séchée." },
+  E4: { lab: "Roseaux, joncs", d: "Grandes tiges de bord d'eau, souvent surmontées d'un plumet. Reconnaissables toute l'année, sèches en hiver." },
+  B2: { lab: "Bâtiments", d: "Maison, hangar, entrepôt, grange, ruine." },
+  B1: { lab: "Tas de pierres ou de bois", d: "Tas de pierres, de gravats ou de bois, vieux murets en pierre." },
+  S1: { lab: "Sol nu, sable ou cailloux", d: "Zones de sol nu, sableux ou caillouteux, peu ou pas circulées : friche minérale, ancienne plateforme, carrière. Les parkings et voiries en service ne comptent pas." }
+};
+const FOLLOW = {
+  V2b: { parent: "V2", q: "Combien ?", ext: ["Quelques arbres isolés", "Un bois, un alignement ou plus de 10"], d: "Quelques arbres isolés, même sur un grand site, ne pèsent pas comme un bois ou un alignement de vieux arbres." },
+  V4b: { parent: "V4", q: "Quelle importance ?", ext: ["Quelques buissons", "Haies ou fourrés importants"], d: "Des haies ou fourrés qui occupent une part importante du site ou de son pourtour, plutôt que quelques buissons isolés." },
+  V5b: { parent: "V5", q: "Quelle surface ?", ext: ["Quelques bandes ou recoins", "Plus d'un quart du site"], d: "Des espaces en herbe sans entretien qui couvrent une grande partie du site." },
+  E4b: { parent: "E4", q: "Quelle densité ?", ext: ["Quelques touffes", "Une zone dense"], d: "Une roselière : une zone où roseaux ou joncs poussent serrés, plutôt que quelques touffes." },
+  S1b: { parent: "S1", q: "Quelle surface au total ?", ext: ["Quelques zones éparses", "Un terrain de foot ou plus"], d: "Repère : un terrain de football fait environ 0,7 ha. Le Petit Gravelot peut nicher sur de petites surfaces, mais l'Œdicnème criard a besoin de grands espaces ouverts." },
+  B1b: { parent: "B1", q: "Combien ?", ext: ["Un tas isolé", "Plusieurs tas ou murets"], d: "Plusieurs tas, ou des murets en pierre sur une longueur importante." },
+  V3: { parent: "V2", q: "Ces arbres ont-ils des trous, des fentes, de l'écorce décollée ou beaucoup de lierre ?", d: "Trous de pics, fentes dans le tronc, écorce qui se détache, branches mortes, lierre épais. Plus facile à voir en hiver, sans les feuilles." },
+  E2: { parent: "E1", q: "Les bords sont-ils en pente douce, avec des herbes ou des roseaux ?", d: "Une berge qui descend doucement dans l'eau, couverte de végétation. Répondre Non pour des bords en béton, bâchés ou à pic." },
+  B3: { parent: "B2", q: "Certains locaux sont-ils vides ou peu utilisés (greniers, combles, caves) ?", d: "Parties de bâtiments inoccupées, fermées ou abandonnées. Si vous n'avez pas pu y accéder, répondez « Pas sûr »." },
+  B4: { parent: "B2", q: "Voyez-vous des fissures, des trous, des tuiles cassées ou des ouvertures ?", d: "Fissures dans les murs, tuiles soulevées ou manquantes, bardages décollés, fenêtres cassées, trous sous les avancées de toit." }
+};
+const SECTIONS = [
+  { t: "Autour du site", s: "à l'œil ou sur vue aérienne", items: ["A1", "A2"] },
+  { t: "Végétation", items: ["V1", "V2", "V4", "V5"] },
+  { t: "Eau", items: ["E1", "E3", "E4"] },
+  { t: "Bâti, abris et sols", items: ["B2", "B1", "S1"] }
+];
+const ANIMALS = [
+  { k: "F1", lab: "Nid", g: 0, d: "Nid dans un arbre, une haie ou sous un toit. Les nids d'hirondelles en boue restent visibles toute l'année. Compte aussi : un oiseau qui entre dans un trou ou une toiture." },
+  { k: "F2", lab: "Chauve-souris", g: 2, d: "Par exemple suspendue dans un grenier, une cave ou sous un pont." },
+  { k: "F3", lab: "Hérisson ou écureuil", g: 1, d: "Ne comptent pas : rats, souris, taupes, lapins." },
+  { k: "F4", lab: "Grenouille, crapaud", g: 3, d: "Adulte, têtards ou œufs." },
+  { k: "F5", lab: "Lézard, serpent", g: 4, d: "Souvent au soleil, au pied des murs et des tas de pierres." },
+  { k: "F6", lab: "Libellule", g: 5, d: "Près de l'eau, de mai à août surtout." },
+  { k: "F7", lab: "Criquet, sauterelle", g: 6, d: "Vus ou entendus dans l'herbe, surtout de juillet à septembre." },
+  { k: "F8", lab: "Papillon", g: 7, d: "Adulte ou chenille." }
+];
+const BONUS = [
+  { k: "I1", lab: "Hirondelles ou martinets nichent chaque année sur les bâtiments", g: 0 },
+  { k: "I2", lab: "Des chauves-souris ont déjà été trouvées dans les bâtiments", g: 2 },
+  { k: "I3", lab: "Grenouilles ou crapauds vus, ou entendus chanter au printemps", g: 3 },
+  { k: "I4", lab: "Lézards ou serpents vus aux beaux jours", g: 4 },
+  { k: "I5", lab: "Hérissons ou écureuils vus sur le site", g: 1 },
+  { k: "I6", lab: "Une partie du site est inondée ou détrempée chaque hiver", g: null },
+  { k: "I7", lab: "Une étude faune-flore ou zones humides a déjà été faite", g: null }
+];
+const GROUPS = [
+  { n: "Oiseaux", s: 2, per: "mars à juillet" },
+  { n: "Mammifères", s: 1, per: "mars à octobre" },
+  { n: "Chauves-souris", s: 2, per: "avril à septembre (gîtes d'hiver : décembre à février)" },
+  { n: "Amphibiens", s: 2, per: "février à juin" },
+  { n: "Reptiles", s: 2, per: "avril à juin et septembre" },
+  { n: "Libellules", s: 0, per: "mai à août" },
+  { n: "Criquets et sauterelles", s: 0, per: "juillet à septembre" },
+  { n: "Papillons", s: 0, per: "avril à août" }
+];
+const W = {
+  A1: [3,3,3,2,2,1,2,2], A2: [1,1,2,3,1,3,0,0], V1: [2,2,1,1,2,1,2,2],
+  V2: [1,1,1,1,0,0,0,0], V2b: [2,1,2,0,0,0,0,1], V3: [3,2,3,0,0,0,0,0],
+  V4: [1,1,1,1,1,0,0,1], V4b: [2,2,1,0,2,0,1,1], V5: [1,1,1,1,1,1,1,1], V5b: [0,0,0,0,2,0,2,2],
+  E1: [1,1,2,3,1,3,0,0], E2: [1,1,1,3,1,3,1,1], E3: [0,0,0,3,0,1,0,0], E4: [0,0,0,1,1,1,0,0], E4b: [1,0,0,1,0,1,0,0],
+  B1: [0,1,0,1,2,0,1,0], B1b: [0,0,0,1,1,0,0,0], S1: [1,0,0,0,1,0,1,0], S1b: [1,0,0,0,1,0,1,1],
+  B2: [1,1,1,0,1,0,0,0], B3: [2,1,3,0,1,0,0,0], B4: [3,1,3,0,2,0,0,0]
+};
+const RULES = [
+  [0,"V3",null,2,"arbres à cavités"], [0,"V4",null,1,"haies et buissons"], [0,"B4",null,1,"ouvertures dans le bâti"],
+  [1,"V4","A1",1,"haies reliées aux milieux voisins"],
+  [2,"V3",null,2,"arbres à cavités"], [2,"B3","B4",2,"locaux vides et ouverts"], [2,"B4",null,1,"fissures et ouvertures"],
+  [3,"E1","E2",2,"point d'eau à bords végétalisés"], [3,"E1",null,1,"point d'eau"], [3,"E3",null,1,"eau stagnante"],
+  [4,"B1","V4",2,"abris près de buissons"], [4,"B1","V5",2,"abris dans l'herbe haute"], [4,"B1",null,1,"tas de pierres ou de bois"],
+  [5,"E1","E2",2,"point d'eau à bords végétalisés"], [5,"E1",null,1,"point d'eau"],
+  [6,"V5",null,1,"herbe sans entretien"], [7,"V5",null,1,"herbe sans entretien"],
+  [0,"V2b",null,1,"bois ou nombreux grands arbres"], [2,"V2b",null,1,"bois ou nombreux grands arbres"], [1,"V2b",null,1,"bois ou nombreux grands arbres"],
+  [0,"S1b",null,1,"grandes surfaces de sol nu (nicheurs au sol)"]
+];
+const MAT = { 2: [0,1,2,2], 1: [0,1,1,2], 0: [0,0,1,1] };
+const NSP = 0.5, SM = 0.30, SF = 0.55;
+const LV = ["Faible", "Modérée", "Forte"];
+const GLOBAL = [
+  { t: "Sensibilité faible", c: "Aucun élément sensible marqué n'a été relevé. Ce repérage ne remplace pas un diagnostic écologique, qui peut être exigé si le projet est soumis à évaluation environnementale." },
+  { t: "Sensibilité modérée", c: "Des éléments favorables à la faune sont présents. Les préserver dans la conception du projet limite les contraintes ; une visite de pré-diagnostic par un écologue est conseillée pour confirmer." },
+  { t: "Sensibilité forte", c: "Des éléments susceptibles d'abriter des espèces protégées ou des zones humides ont été relevés. Les éviter dès la conception du projet est le moyen le plus efficace de limiter les contraintes ; à défaut, un diagnostic écologique sera nécessaire, avec des inventaires répartis sur un cycle annuel." }
+];
+const ELEMS = [
+  ["V3", "Arbres à cavités, fentes ou lierre", "chauves-souris, oiseaux"],
+  ["V2b", "Bois, alignement ou nombreux grands arbres", "oiseaux, chauves-souris, mammifères"],
+  ["V2", "Grands arbres isolés", "oiseaux, chauves-souris"],
+  ["V4", "Haies, buissons ou fourrés", "oiseaux, reptiles, hérisson"],
+  ["V5", "Espaces en herbe sans entretien", "reptiles, insectes"],
+  ["E1", "Mare, bassin ou fossé", "amphibiens, libellules"],
+  ["E3", "Zones d'eau stagnante", "zone humide possible, amphibiens"],
+  ["E4", "Roseaux ou joncs", "zone humide possible"],
+  ["S1b", "Grandes surfaces de sol nu, sableux ou caillouteux", "oiseaux nicheurs au sol, reptiles"],
+  ["S1", "Petites zones de sol nu ou caillouteux", "reptiles, insectes"],
+  ["B1", "Tas de pierres, de bois ou murets", "reptiles"],
+  ["B3", "Locaux vides ou peu utilisés", "chauves-souris, oiseaux"],
+  ["B4", "Fissures et ouvertures du bâti", "chauves-souris, oiseaux"]
+];
+const RECO = ["Pas d'enjeu pressenti à ce stade.", "Avis d'un écologue conseillé.", "Expertise écologique recommandée."];
+
+const today = new Date();
+const fresh = () => ({
+  view: "releve",
+  site: "Exemple : plateforme logistique, Bonneuil-sur-Marne (94)",
+  date: today.toISOString().slice(0, 10),
+  proj: { P1: null, P2: null },
+  el: {}, fol: {}, ani: {}, bonus: {}, bonusOpen: false, projOpen: false, tour: null, errs: {}
+});
+let S = fresh();
+try { const raw = localStorage.getItem("otb-proto-2"); if (raw) S = Object.assign(fresh(), JSON.parse(raw), { errs: {} }); } catch (e) {}
+function save() { try { localStorage.setItem("otb-proto-2", JSON.stringify(S)); } catch (e) {} }
+
+const $ = (s, r = document) => r.querySelector(s);
+const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const month = () => { const d = new Date(S.date); return isNaN(d) ? today.getMonth() + 1 : d.getMonth() + 1; };
+const coldSeason = () => { const m = month(); return m >= 10 || m <= 2; };
+
+function seg(name, val, opts) {
+  return '<div class="seg" role="group">' + opts.map(([v, l]) =>
+    `<button type="button" data-seg="${name}" data-v="${v}" aria-pressed="${val === v}">${l}</button>`).join("") + "</div>";
+}
+
+function renderReleve() {
+  const dateTxt = new Date(S.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+  let h = `<header class="top">
+    <div class="eyebrow"><span>Relevé biodiversité · ${esc(dateTxt)}</span>${coldSeason() ? '<span class="tag">Saison froide : peu d\'animaux visibles</span>' : ""}</div>
+    <h1>Qu'avez-vous vu sur le site ?</h1>
+    <input class="site" id="site" value="${esc(S.site)}" aria-label="Nom du site">
+  </header>
+  <div class="hint"><span>Touchez ce que vous voyez. <b>Appui long</b> sur une tuile : voir un exemple. <b>?</b> si vous n'êtes pas sûr.</span></div>
+`;
+  for (const sec of SECTIONS) {
+    h += `<section><div class="sec-head"><h2>${sec.t}</h2>${sec.s ? `<small>${sec.s}</small>` : ""}</div><div class="grid">`;
+    for (const k of sec.items) {
+      const st = S.el[k] || 0;
+      h += `<div class="tile ${st === 1 ? "vu" : st === 2 ? "ns" : ""}" role="button" tabindex="0" data-tile="${k}" aria-pressed="${st === 1}" aria-label="${esc(EL[k].lab)}">
+        <span class="badge" aria-hidden="true">${st === 2 ? "?" : "✓"}</span>${svg(k)}<span class="lab">${EL[k].lab}</span>
+        <button type="button" class="unsure" data-unsure="${k}" aria-label="Pas sûr : ${esc(EL[k].lab)}" aria-pressed="${st === 2}">?</button></div>`;
+      for (const [fk, f] of Object.entries(FOLLOW)) {
+        if (f.parent === k && st === 1) {
+          const opts = f.ext ? [["non", f.ext[0]], ["oui", f.ext[1]], ["nsp", "Pas sûr"]] : [["oui","Oui"],["non","Non"],["nsp","Pas sûr"]];
+          h += `<div class="follow ${S.errs[fk] ? "err" : ""}" id="f-${fk}"><p>${f.q}</p>${seg("F:" + fk, S.fol[fk] || null, opts)}
+            <button type="button" class="ex" data-ex="${fk}">Voir un exemple</button>${S.errs[fk] ? '<p class="errmsg">Répondez à cette question pour terminer.</p>' : ""}</div>`;
+        }
+      }
+    }
+    h += "</div></section>";
+  }
+  h += `<section><div class="sec-head"><h2>Animaux vus</h2><small>si vous en croisez</small></div><div class="chips">` +
+    ANIMALS.map(a => `<button type="button" class="chip" data-ani="${a.k}" aria-pressed="${!!S.ani[a.k]}">${a.lab}</button>`).join("") + `</div></section>`;
+  const np = [S.proj.P1, S.proj.P2].filter(Boolean).length;
+  h += `<div class="fold"><button type="button" id="projBtn" aria-expanded="${S.projOpen}"><span>Une intention de projet est connue ?</span><span>${np ? np + " réponse" + (np > 1 ? "s" : "") : "facultatif"} ${S.projOpen ? "▴" : "▾"}</span></button>`;
+  if (S.projOpen) h += `<div class="inner">
+      <div class="q"><p>Démolition, rénovation lourde ou extension des bâtiments ?</p>${seg("P1", S.proj.P1, [["oui","Oui"],["non","Non"],["nsp","Ne sait pas"]])}</div>
+      <div class="q"><p>Constructions sur des espaces aujourd'hui non bâtis, abattage d'arbres ou de haies ?</p>${seg("P2", S.proj.P2, [["oui","Oui"],["non","Non"],["nsp","Ne sait pas"]])}</div></div>`;
+  h += `</div>`;
+  const nb = BONUS.filter(b => S.bonus[b.k]).length;
+  h += `<div class="fold"><button type="button" id="bonusBtn" aria-expanded="${S.bonusOpen}"><span>Un occupant ou le gestionnaire est présent ?</span><span>${nb ? nb + " confirmé" + (nb > 1 ? "s" : "") : "facultatif"} ${S.bonusOpen ? "▴" : "▾"}</span></button>`;
+  if (S.bonusOpen) {
+    h += `<div class="inner"><p>Cochez seulement ce que votre interlocuteur confirme avoir constaté lui-même.</p>` +
+      BONUS.map(b => `<button type="button" class="check" data-bonus="${b.k}" aria-pressed="${!!S.bonus[b.k]}"><span class="box" aria-hidden="true"></span><span>${b.lab}</span></button>`).join("") + "</div>";
+  }
+  h += `</div>
+  <div class="closing ${S.errs.tour ? "err" : ""}" id="closing"><p>Avez-vous fait le tour des espaces extérieurs ?</p>
+    <small>Ce qui n'est pas coché sera considéré comme absent si vous avez fait le tour complet.</small>
+    ${seg("tour", S.tour, [["oui","Oui"],["partie","En partie"],["non","Non"]])}
+    ${S.errs.tour ? '<p class="errmsg">Répondez à cette question pour terminer.</p>' : ""}</div>`;
+  $("#app").innerHTML = h;
+  const vu = Object.values(S.el).filter(v => v === 1).length + Object.values(S.ani).filter(Boolean).length;
+  const ns = Object.values(S.el).filter(v => v === 2).length;
+  $("#bar").innerHTML = `<div class="bar-in"><div class="count"><b>${vu}</b> élément${vu > 1 ? "s" : ""} vu${vu > 1 ? "s" : ""}${ns ? ` · <b>${ns}</b> pas sûr` : ""}</div><button type="button" class="primary" id="finish">Terminer</button></div>`;
+  $("#bar").style.display = "";
+  bindReleve();
+}
+
+function bindPress(el, onTap, onLong) {
+  let t = null, long = false, x = 0, y = 0;
+  el.addEventListener("pointerdown", e => {
+    if (e.target.closest(".unsure")) return;
+    long = false; x = e.clientX; y = e.clientY; el.classList.add("pressing");
+    t = setTimeout(() => { long = true; el.classList.remove("pressing"); if (navigator.vibrate) { try { navigator.vibrate(15); } catch (er) {} } onLong(); }, 450);
+  });
+  const cancel = () => { clearTimeout(t); el.classList.remove("pressing"); };
+  el.addEventListener("pointermove", e => { if (Math.abs(e.clientX - x) > 10 || Math.abs(e.clientY - y) > 10) cancel(); });
+  el.addEventListener("pointerleave", cancel);
+  el.addEventListener("pointercancel", cancel);
+  el.addEventListener("pointerup", e => { if (e.target.closest(".unsure")) return; const was = t; cancel(); if (!long && was) onTap(); t = null; });
+  el.addEventListener("contextmenu", e => e.preventDefault());
+  el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onTap(); } if (e.key.toLowerCase() === "e") onLong(); });
+}
+
+function bindReleve() {
+  $("#site").addEventListener("input", e => { S.site = e.target.value; save(); });
+  document.querySelectorAll("[data-tile]").forEach(el => {
+    const k = el.dataset.tile;
+    bindPress(el, () => { S.el[k] = S.el[k] === 1 ? 0 : 1; save(); rerender(); }, () => openSheet(k));
+  });
+  document.querySelectorAll("[data-unsure]").forEach(b => b.addEventListener("click", e => {
+    e.stopPropagation(); const k = b.dataset.unsure; S.el[k] = S.el[k] === 2 ? 0 : 2; save(); rerender();
+  }));
+  document.querySelectorAll("[data-seg]").forEach(b => b.addEventListener("click", () => {
+    const n = b.dataset.seg, v = b.dataset.v;
+    if (n.startsWith("F:")) { const k = n.slice(2); S.fol[k] = S.fol[k] === v ? null : v; delete S.errs[k]; }
+    else if (n === "tour") { S.tour = v; delete S.errs.tour; }
+    else S.proj[n] = S.proj[n] === v ? null : v;
+    save(); rerender();
+  }));
+  document.querySelectorAll("[data-ex]").forEach(b => b.addEventListener("click", () => openSheet(b.dataset.ex)));
+  document.querySelectorAll("[data-ani]").forEach(el => {
+    const k = el.dataset.ani;
+    bindPress(el, () => { S.ani[k] = !S.ani[k]; save(); rerender(); }, () => openSheet(k));
+  });
+  document.querySelectorAll("[data-bonus]").forEach(b => b.addEventListener("click", () => { const k = b.dataset.bonus; S.bonus[k] = !S.bonus[k]; save(); rerender(); }));
+  $("#bonusBtn").addEventListener("click", () => { S.bonusOpen = !S.bonusOpen; save(); rerender(); });
+  $("#projBtn").addEventListener("click", () => { S.projOpen = !S.projOpen; save(); rerender(); });
+  $("#finish").addEventListener("click", finish);
+}
+
+function rerender() { const y = window.scrollY; render(); window.scrollTo(0, y); }
+
+function openSheet(k) {
+  const a = ANIMALS.find(x => x.k === k);
+  const isTile = !!EL[k], isFol = !!FOLLOW[k];
+  const title = isTile ? EL[k].lab : isFol ? FOLLOW[k].q : a.lab;
+  const desc = isTile ? EL[k].d : isFol ? FOLLOW[k].d : a.d;
+  const pic = SVG[k] ? `<div class="pic">${svg(k, true)}</div><p class="note">Illustration de principe : dans la version finale, une photo de terrain.</p>` : "";
+  const acts = isTile
+    ? `<div class="acts"><button type="button" class="primary" data-sa="vu">Je l'ai vu</button><button type="button" class="ghost" data-sa="ns">Pas sûr</button><button type="button" class="ghost" data-sa="x">Fermer</button></div>`
+    : `<div class="acts one"><button type="button" class="ghost" data-sa="x">Fermer</button></div>`;
+  $("#layer").innerHTML = `<div class="sheet-wrap" id="sw"><div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(title)}"><span class="grab"></span>${pic}<h2>${esc(title)}</h2><p>${esc(desc)}</p>${acts}</div></div>`;
+  const close = () => { $("#layer").innerHTML = ""; };
+  $("#sw").addEventListener("click", e => { if (e.target.id === "sw") close(); });
+  document.querySelectorAll("[data-sa]").forEach(b => b.addEventListener("click", () => {
+    if (b.dataset.sa === "vu") S.el[k] = 1;
+    if (b.dataset.sa === "ns") S.el[k] = 2;
+    save(); close(); if (b.dataset.sa !== "x") rerender();
+  }));
+  const f = $("#layer button"); if (f) f.focus();
+}
+
+function finish() {
+  S.errs = {};
+  for (const [fk, f] of Object.entries(FOLLOW)) if (S.el[f.parent] === 1 && !S.fol[fk]) S.errs[fk] = true;
+  if (!S.tour) S.errs.tour = true;
+  if (Object.keys(S.errs).length) {
+    rerender();
+    const first = Object.keys(S.errs).find(k => k !== "tour");
+    const target = first ? $("#f-" + first) : $("#closing");
+    if (target) target.scrollIntoView({ behavior: "smooth", block: "center" });
+    return;
+  }
+  S.view = "res"; save(); render(); window.scrollTo(0, 0);
+}
+
+function compute() {
+  const untapped = S.tour === "oui" ? 0 : NSP;
+  const val = k => {
+    if (EL[k]) { const s = S.el[k] || 0; return s === 1 ? 1 : s === 2 ? NSP : untapped; }
+    const f = FOLLOW[k], p = val(f.parent);
+    if (p === 0) return 0;
+    if (S.el[f.parent] === 1) { const a = S.fol[k]; return a === "oui" ? 1 : a === "non" ? 0 : NSP; }
+    return NSP;
+  };
+  const yes = k => val(k) === 1;
+  const groups = GROUPS.map((g, i) => {
+    let num = 0, den = 0;
+    for (const k in W) { num += W[k][i] * val(k); den += W[k][i]; }
+    const score = den ? num / den : 0;
+    const cls = score >= SF ? 2 : score >= SM ? 1 : 0;
+    let floor = 0, why = null;
+    for (const [gi, a, b, lv, lab] of RULES) if (gi === i && yes(a) && (!b || yes(b)) && lv > floor) { floor = lv; why = lab; }
+    const obs = ANIMALS.some(a => a.g === i && S.ani[a.k]);
+    const said = BONUS.some(b => b.g === i && S.bonus[b.k]);
+    const niv = obs || said ? 3 : Math.max(cls, floor);
+    const vig = MAT[g.s][niv];
+    let reason = obs ? "Observés pendant la visite" : said ? "Signalés par un occupant"
+      : why && floor >= cls ? why.charAt(0).toUpperCase() + why.slice(1) + " (élément déterminant)"
+      : cls ? "Plusieurs milieux favorables" : "Peu de milieux favorables";
+    return { n: g.n, per: g.per, vig, reason, score };
+  });
+  let zh = 0; const zhw = [];
+  if (yes("E3")) zhw.push("eau stagnante ou boue"); if (yes("E4")) zhw.push("roseaux ou joncs"); if (S.bonus.I6) zhw.push("inondation signalée chaque hiver");
+  if (zhw.length) zh = 2;
+  else if (yes("A2") || val("E3") === NSP || val("E4") === NSP) { zh = 1; zhw.push(yes("A2") ? "eau à proximité" : "éléments non vérifiés"); }
+  const global = Math.max(zh, ...groups.map(g => g.vig));
+  const alerts = [];
+  if (coldSeason()) alerts.push("Visite entre octobre et février : peu d'animaux sont visibles, le résultat repose sur les milieux décrits.");
+  if (S.tour !== "oui") alerts.push("Tour des espaces extérieurs incomplet : les éléments non cochés sont comptés comme incertains.");
+  if (S.proj.P1 === "oui" && (yes("B3") || yes("B4") || S.ani.F1 || S.ani.F2 || S.bonus.I1 || S.bonus.I2))
+    alerts.push("Travaux sur des bâtiments pouvant abriter chauves-souris ou oiseaux protégés : faire expertiser les bâtiments avant travaux, avec un calendrier adapté.");
+  if (S.proj.P2 === "oui" && ["V2","V3","V4","V5","S1","E1","E3","E4"].some(yes))
+    alerts.push("Aménagement envisagé sur des espaces favorables à la faune ou potentiellement humides : les éléments listés plus haut sont à éviter en priorité. Abattages et défrichements hors période de nidification (mi-mars à fin août).");
+  if (S.bonus.I7) alerts.push("Une étude environnementale existe : la récupérer, elle peut confirmer ou lever les enjeux.");
+  const nsp = Object.values(S.el).filter(v => v === 2).length + Object.values(S.fol).filter(v => v === "nsp").length;
+  let fi = S.tour === "oui" ? 0 : S.tour === "partie" ? 1 : 2;
+  if (nsp >= 3) fi++; if (nsp >= 6) fi++; fi = Math.min(fi, 2);
+  const elems = [];
+  for (const [k, l, g] of ELEMS) {
+    if ((k === "V2" || k === "S1") && yes(k + "b")) continue;
+    const v = val(k);
+    if (v === 1) elems.push({ l, g, v: false });
+    else if ((EL[k] && S.el[k] === 2) || (FOLLOW[k] && S.el[FOLLOW[k].parent] === 1 && S.fol[k] === "nsp")) elems.push({ l, g, v: true });
+  }
+  if (S.bonus.I6) elems.push({ l: "Partie du site inondée chaque hiver", g: "zone humide possible, signalée par un occupant", v: false });
+  return { groups, zh, zhw, global, alerts, elems, fiab: ["bonne", "moyenne", "faible"][fi], nsp };
+}
+
+function elemsHtml(R) {
+  const items = R.elems;
+  if (!items.length) return `<section><div class="sec-head"><h2>Éléments à préserver</h2></div><p class="foot">Aucun élément sensible relevé.</p></section>`;
+  return `<section><div class="sec-head"><h2>Éléments à préserver</h2><small>pour la conception</small></div><div class="rows">` +
+    items.map(e => `<div class="row"><div class="nm"><b>${e.l}</b><span>${e.g}</span></div>${e.v ? '<span class="pill lv-1">À vérifier</span>' : ""}</div>`).join("") + `</div></section>`;
+}
+
+function renderRes() {
+  const R = compute();
+  const G = GLOBAL[R.global];
+  const order = R.groups.map((g, i) => ({ ...g, i })).sort((a, b) => b.vig - a.vig || b.score - a.score);
+  const why = order.filter(g => g.vig === R.global && R.global > 0).slice(0, 4).map(g => `<li><b>${g.n}</b> : ${g.reason.charAt(0).toLowerCase() + g.reason.slice(1)}</li>`);
+  if (R.zh === R.global && R.zh > 0) why.unshift(`<li><b>Zones humides</b> : ${R.zhw.join(", ")}</li>`);
+  const dateTxt = new Date(S.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+  let h = `<header class="top"><div class="eyebrow"><span>${esc(S.site)} · ${esc(dateTxt)}</span></div></header>
+  <div class="verdict lv-${R.global}"><span class="k">Sensibilité biodiversité du site</span><h1>${G.t}</h1><p>${G.c}</p>${why.length ? `<ul class="why">${why.join("")}</ul>` : ""}</div>
+  ${elemsHtml(R)}
+  <section><div class="sec-head"><h2>Par groupe</h2><small>sensibilité</small></div><div class="rows">` +
+    order.map(g => `<div class="row"><div class="nm"><b>${g.n}</b><span>${g.reason}${g.vig ? " · inventaire : " + g.per : ""}</span></div><span class="pill lv-${g.vig}">${LV[g.vig]}</span></div>`).join("") +
+    `</div></section>
+  <section><div class="sec-head"><h2>Zones humides</h2></div><div class="rows"><div class="row"><div class="nm"><b>${R.zh === 2 ? "Indices relevés" : R.zh === 1 ? "À vérifier" : "Aucun indice"}</b><span>${R.zhw.length ? R.zhw.join(", ") : "Ni eau stagnante ni plantes de bord d'eau relevées."}${R.zh === 2 ? " · secteur à éviter ; au-delà de 0,1 ha touché, dossier loi sur l'eau (rubrique 3.3.1.0)." : ""}</span></div><span class="pill lv-${R.zh}">${LV[R.zh]}</span></div></div></section>`;
+  if (R.alerts.length) h += `<section><div class="sec-head"><h2>Points d'attention</h2></div><ul class="alerts">${R.alerts.map(a => `<li>${a}</li>`).join("")}</ul></section>`;
+  h += `<p class="foot">Fiabilité du relevé : <b>${R.fiab}</b>${R.nsp ? ` (${R.nsp} réponse${R.nsp > 1 ? "s" : ""} « pas sûr »)` : ""}. Repérage très préliminaire, établi par un non-spécialiste en une visite ; il ne remplace pas un diagnostic écologique.</p>
+  <div class="actions"><button type="button" class="ghost" id="edit">Modifier le relevé</button><button type="button" class="ghost" id="copy">Copier la synthèse</button><button type="button" class="ghost" id="reset">Nouveau relevé</button></div>`;
+  $("#app").innerHTML = h;
+  $("#bar").style.display = "none";
+  $("#edit").addEventListener("click", () => { S.view = "releve"; save(); render(); window.scrollTo(0, 0); });
+  $("#copy").addEventListener("click", async () => {
+    const txt = [`${G.t}`, `${S.site} (${dateTxt})`, G.c, "", ...(R.elems.length ? ["Éléments à préserver :", ...R.elems.map(e => `- ${e.l} (${e.g})${e.v ? " : à vérifier" : ""}`), ""] : []),
+      ...order.map(g => `- ${g.n} : ${LV[g.vig]} (${g.reason})`), `- Zones humides : ${LV[R.zh]}${R.zhw.length ? " (" + R.zhw.join(", ") + ")" : ""}`,
+      ...(R.alerts.length ? ["", "Points d'attention :", ...R.alerts.map(a => "- " + a)] : []), "", `Fiabilité : ${R.fiab}`].join("\n");
+    try { await navigator.clipboard.writeText(txt); toast("Synthèse copiée"); } catch (e) { toast("Copie impossible depuis ce navigateur"); }
+  });
+  const rb = $("#reset"); let armed = false;
+  rb.addEventListener("click", () => {
+    if (!armed) { armed = true; rb.textContent = "Confirmer l'effacement"; rb.style.borderColor = "var(--high)"; rb.style.color = "var(--high)"; setTimeout(() => { if (armed) { armed = false; rb.textContent = "Nouveau relevé"; rb.style.cssText = ""; } }, 3500); return; }
+    S = fresh(); S.site = ""; save(); render(); window.scrollTo(0, 0);
+  });
+}
+
+function toast(m) { const d = document.createElement("div"); d.className = "toast"; d.textContent = m; document.body.appendChild(d); setTimeout(() => d.remove(), 1800); }
+function render() { S.view === "res" ? renderRes() : renderReleve(); }
+
+window.claude?.hot?.snapshot?.(() => S);
+const start = data => { if (data && data.view) S = Object.assign(fresh(), data); render(); };
+window.claude?.hot?.ready ? window.claude.hot.ready(start) : start(window.claude?.hot?.data ?? {});
+</script>
+</body>
+</html>
