@@ -15,7 +15,7 @@ Questionnaire de pré-repérage biodiversité destiné à des non-spécialistes,
 
 | Dossier | Contenu |
 | --- | --- |
-| `app/` | Prototype de web app terrain (page HTML autonome : tuiles illustrées, appui long pour la fiche d'exemple, résultats, résumé à copier). S'ouvre directement dans un navigateur ; les réponses sont gardées dans le stockage local du navigateur. |
+| `app/` | Prototype de web app terrain : tuiles illustrées, appui long pour la fiche d'exemple avec photos (`app/photos/`), résultats, résumé à copier. S'ouvre directement dans un navigateur ; les réponses sont gardées dans le stockage local du navigateur. Version en ligne : https://anthalk.github.io/outil-terrain-biodiversite/ |
 | `excel/` | Version Excel V2 (`Outil_terrain_biodiversite_V2.xlsx`) et le script Python qui la génère (`construire_excel.py`, openpyxl). |
 | `moteur/` | Moteur V3 en Python (`engine_v3.py`) : table de décision, signal d'alerte du score et conditions du « Faible ». |
 | `docs/` | Table de décision V3 (`table_de_decision.md`) : règles par groupe, conventions, décisions prises et points ouverts. |
@@ -69,3 +69,5 @@ Limites du test : les avis de MRAe décrivent les sites de façon inégale, le c
 ## Licence
 
 Aucune licence n'est définie pour l'instant : tous droits réservés par défaut.
+
+Les photos de `app/photos/` proviennent de Wikimedia Commons et restent soumises à leur propre licence (CC0, CC BY, CC BY-SA ou domaine public) : auteurs et licences sont indiqués sur chaque photo dans l'outil et dans [CREDITS.md](CREDITS.md).
