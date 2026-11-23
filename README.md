@@ -7,7 +7,7 @@ Questionnaire de pré-repérage biodiversité destiné à des non-spécialistes,
 ## À quoi sert l'outil
 
 - **Public** : un visiteur non écologue, venu sur site pour d'autres raisons (technique, foncier, environnement au sens large), sans connaissance de l'historique du site.
-- **Ce qu'il produit** : un niveau de sensibilité par groupe (oiseaux, mammifères, chauves-souris, amphibiens, reptiles, libellules, criquets, papillons), des thèmes à part (zone humide, cours d'eau, flore et habitats), le type de contrainte attendue si l'enjeu est confirmé (C0 à C3) et la liste des éléments à préserver.
+- **Ce qu'il produit** : un niveau de sensibilité par groupe (oiseaux, mammifères, chauves-souris, amphibiens, reptiles, libellules, criquets, papillons), des thèmes à part (zone humide, cours d'eau, flore et habitats), le type de contrainte attendue si l'enjeu est confirmé et la liste des éléments à préserver.
 - **À quoi il sert** : orienter le choix des sites et éviter en amont les secteurs sensibles, puis cadrer le diagnostic écologique à commander.
 - **Ce qu'il ne fait pas** : il n'évalue pas l'impact d'un projet (qui suppose un projet au moins esquissé), ne localise pas les enjeux et ne conclut jamais à l'absence d'espèces protégées. Un résultat « Faible » n'est délivré que sous conditions ; sinon le résultat est « Indéterminée ».
 
